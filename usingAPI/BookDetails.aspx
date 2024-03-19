@@ -10,8 +10,40 @@
     <form id="form1" runat="server">
         <div>
             <h3>List Of Books available in Library</h3>
-             <asp:Literal ID="litTable" runat="server" />
-            
+            <table>
+                <tr>
+                    <td><span>Get All Book list on oneClick</span></td>
+                    <td>
+                        <asp:Button ID="btngetAll" runat="server" Text="Get All" OnClick="btngetAll_Click" />
+                           <asp:Label ID="lblerror1" runat="server" Text=""></asp:Label>
+                    </td>
+                </tr>
+                <tr id="TrAll" runat="server">
+                    <td colspan="2">
+                        <asp:Literal ID="litTable" runat="server" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <h2>OR</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span>Enter Book Id: </span>
+                        <asp:TextBox ID="txtbookId" runat="server" TextMode="Number" MaxLength="2"></asp:TextBox>
+                    </td>
+                    <td>
+                        <asp:Button ID="btnbookId" runat="server" Text="Find" OnClick="btnbookId_Click" /></td>
+                    <asp:Label ID="lblerror2" runat="server" Text=""></asp:Label>
+                </tr>
+                <tr id="trId" runat="server">
+                    <td colspan="2">
+                        <asp:Literal ID="Literal1" runat="server" />
+                    </td>
+                </tr>
+            </table>
+
+
         </div>
     </form>
 </body>
