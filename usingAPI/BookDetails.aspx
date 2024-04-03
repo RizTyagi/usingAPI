@@ -8,13 +8,14 @@
 </head>
 <body>
     <form id="form1" runat="server">
+           <a href="Index.aspx">goto Dashboard</a>
         <div>
             <h3>List Of Books available in Library</h3>
             <table>
                 <tr>
                     <td><span>Get All Book list on oneClick</span></td>
                     <td>
-                        <asp:Button ID="btngetAll" runat="server" Text="Get All" OnClick="btngetAll_Click" />
+                        <asp:Button ID="btngetAll" runat="server" Text="Get All" OnClick="BtngetAll_Click" />
                            <asp:Label ID="lblerror1" runat="server" Text=""></asp:Label>
                     </td>
                 </tr>
@@ -33,7 +34,7 @@
                         <asp:TextBox ID="txtbookId" runat="server" TextMode="Number" MaxLength="2"></asp:TextBox>
                     </td>
                     <td>
-                        <asp:Button ID="btnbookId" runat="server" Text="Find" OnClick="btnbookId_Click" /></td>
+                        <asp:Button ID="btnbookId" runat="server" Text="Find" OnClick="BtnbookId_Click" /></td>
                     <asp:Label ID="lblerror2" runat="server" Text=""></asp:Label>
                 </tr>
                 <tr id="trId" runat="server">

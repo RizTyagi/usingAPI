@@ -1,12 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace usingAPI
 {
@@ -17,7 +13,7 @@ namespace usingAPI
           
         }
 
-        public async void getBookList()
+        public async void GetBookList()
         {
             List<Book> book = new List<Book>();
             StringBuilder strTbl = new StringBuilder();
@@ -43,13 +39,13 @@ namespace usingAPI
             litTable.Text = strTbl.ToString();
         }
 
-        protected void btngetAll_Click(object sender, EventArgs e)
+        protected void BtngetAll_Click(object sender, EventArgs e)
         {
             trId.Visible=false;
             TrAll.Visible = true;
-            getBookList();
+            GetBookList();
         }
-        public async void getBookById(int BookId)
+        public async void GetBookById(int BookId)
         {
             List<Book> book = new List<Book>();
             StringBuilder strTbl = new StringBuilder();
@@ -63,14 +59,12 @@ namespace usingAPI
                 {
                     var content = await response.Content.ReadAsStringAsync();
                     book = JsonConvert.DeserializeObject<List<Book>>(content);
-                    if (book != null)
+                    if (book != null && book.Count>0)
                     {
-                        for (int i = 0; i < book.Count; i++)
-                        {
-                            strTbl.AppendLine("<tr><td>" + book[i].id.ToString() + "</td>");
-                            strTbl.AppendLine("<td>" + book[i].Name + "</td>");
-                            strTbl.AppendLine("<td>" + book[i].Author + "</td></tr>");
-                        }
+                            strTbl.AppendLine("<tr><td>" + book[0].id.ToString() + "</td>");
+                            strTbl.AppendLine("<td>" + book[0].Name + "</td>");
+                            strTbl.AppendLine("<td>" + book[0].Author + "</td></tr>");
+                       
                     }
                 }
                 else
@@ -82,15 +76,15 @@ namespace usingAPI
             strTbl.AppendLine("</table>");
             Literal1.Text = strTbl.ToString();
         }
-        protected void btnbookId_Click(object sender, EventArgs e)
+        protected void BtnbookId_Click(object sender, EventArgs e)
         {
             trId.Visible = true;
             TrAll.Visible = false;
             int bookid = Convert.ToInt32(txtbookId.Text);
 
-            if (bookid != 0 || bookid != null)
+            if (bookid != 0)
             {
-                getBookById(bookid);
+                GetBookById(bookid);
             }
             else
             {
